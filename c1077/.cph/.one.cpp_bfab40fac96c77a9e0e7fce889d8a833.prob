@@ -1,0 +1,1 @@
+{"name":"Local: one","url":"/home/adie/Desktop/coffee/codes/Competitive Programming/c1077/one.cpp","tests":[{"id":1769697627469,"input":"5\n2\n3\n4\n5\n12","output":"1 2\n2 3 1\n2 3 1 4\n3 2 4 1 5\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/adie/Desktop/coffee/codes/Competitive Programming/c1077/one.cpp","group":"local","local":true}
