@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void adie()
+{
+   int n;
+   cin >> n;
+   
+}
+
+int main()
+{
+   int _t;
+   cin >> _t;
+   while (_t --)
+   {
+      adie();
+   }
+}
