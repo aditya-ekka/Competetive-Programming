@@ -9,6 +9,11 @@ void brute()
    long long  ar[n];
    for(long long  i=0; i<n; i++) cin >> ar[i];
 
+   if(n==1){
+      cout << x + ar[0] << endl;
+      return;
+   }
+
    sort(ar, ar+n);
    long long  i=0, sum=0;
 
@@ -18,12 +23,17 @@ void brute()
       // cout << sum << " " ;
       if(sum > x){
          sum -= i * (ar[i] - ar[i-1]);
-         // i--;
+         i--;
          break;
       }
    }
 
-   h = ar[i] + ((x - sum) / i);
+   if(i==0) i=1;
+
+   h = ar[i];
+   if(x>sum){
+      h += (x-sum) / i;
+   }
 
    cout << ar[i] << " " <<  h << endl;
    cout << endl;
