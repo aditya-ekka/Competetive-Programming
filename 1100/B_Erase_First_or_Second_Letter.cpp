@@ -1,4 +1,5 @@
 #include <iostream>
+#include <set>
 using namespace std;
 
 int dp(int n)
@@ -27,6 +28,20 @@ int dp(int n)
    return ans;
 }
 
+int adie(int n)
+{
+   string s;
+   cin >> s;
+
+   set <char> ar;
+   int ans=0;
+   for(int i=0; i<n; i++){
+      ar.insert(s[i]);
+      ans += ar.size();
+   }
+   return ans;
+}
+
 int main()
 {
    int t;
@@ -35,7 +50,7 @@ int main()
    {
       int n;
       cin >> n;
-      cout << dp(n) << endl;
+      cout << adie(n) << endl;
    }
    return 0;
 }
