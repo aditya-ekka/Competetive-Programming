@@ -4,99 +4,86 @@ using namespace std;
 
 int main()
 {
-   int t;
-   cin >> t;
-   while(t--){
+   int test;
+   cin >> test;
+   while(test--)
+   {
       int n;
       cin >> n;
-
-      map <int, int> a;
-      int key=-1, t, freq=1;
+      int a[n], b[n];
       for(int i=0; i<n; i++){
-         cin >> t;
-         if(t == key){
-            freq++;
-            if(i==n-1){
-               if(a.find(t) != a.end()){
-                  int temp_2 = a[key];
-                  a[key] = max(freq, temp_2);
-                  // a[5] = 1;
-               }else{
-                  a[key] = freq;
-               }
-            }
-         }else{
-            if(a.find(t) != a.end()){
-               int temp_2 = a[key];
-               a[key] = max(freq, temp_2);
-               // a[5] = 1;
-            }else{
-               a[key] = freq;
-            }
-            //
-            key = t;
-            freq = 1;
-         }
+         cin >> a[i];
+      }
+      for(int i=0; i<n; i++){
+         cin >> b[i];
       }
 
-      map <int, int> b;
-      key=-1, freq=1;
+      map <int, int> mp;
+      int it=a[0], freq=0;
       for(int i=0; i<n; i++){
-         cin >> t;
-         if(t == key){
+         if(it==a[i]){
             freq++;
-            if(i==n-1){
-               if(b.find(t) != b.end()){
-                  int temp_2 = b[key];
-                  b[key] = max(freq, temp_2);
-                  // a[5] = 1;
-               }else{
-                  b[key] = freq;
-               }
-            }
          }else{
-            if(b.find(t) != b.end()){
-               int temp_2 = b[key];
-               b[key] = max(freq, temp_2);
-               // a[5] = 1;
+            if(mp.find(it) != mp.end()){
+               int x = max(mp[it], freq);
+               mp[it] = x;
             }else{
-               b[key] = freq;
+               mp[it] = freq;
             }
-            //
-            key = t;
-            freq = 1;
+            it = a[i];
+            freq=1;
          }
       }
-   
-      //
-      for(auto it:a){
-         cout << it.first << ":" << it.second << " ";
-      }cout << endl;
-      for(auto it:b){
-         cout << it.first << ":" << it.second << " ";
-      }cout << endl;
-      //
+      if(mp.find(it) != mp.end()){
+         int x = max(mp[it], freq);
+         mp[it] = x;
+      }else{
+         mp[it] = freq;
+      }
+
+      map <int, int> mp2;
+      it=b[0]; freq=0;
+      for(int i=0; i<n; i++){
+         if(it==b[i]){
+            freq++;
+         }else{
+            if(mp2.find(it) != mp2.end()){
+               int x = max(mp2[it], freq);
+               mp2[it] = x;
+            }else{
+               mp2[it] = freq;
+            }
+            it = b[i];
+            freq=1;
+         }
+      }
+      if(mp2.find(it) != mp2.end()){
+         int x = max(mp2[it], freq);
+         mp2[it] = x;
+      }else{
+         mp2[it] = freq;
+      }
 
       int ans=0;
-      for(auto it:a){
-         if((it.first != -1
-         ) && (b.find(it.first) != b.end())){
-            ans = max (ans, it.second + b[it.first]);
-         }else{
-            ans = max (ans, it.second);
-         }
-         cout << ans << " ";
+      for(auto [x,y] : mp){
+         ans = max(ans, y);
       }
-      for(auto it:b){
-         if((it.first!=-1) && (a.find(it.first) != a.end())){
-            ans = max (ans, it.second + a[it.first]);
-         }else{
-            ans = max (ans, it.second);
+      for(auto [x,y] : mp2){
+         ans = max(ans, y);
+      }
+      for(auto[x,y]: mp){
+         if(mp2.find(x) != mp2.end()){
+            ans = max(ans, y + mp2[x]);
          }
-         cout << ans << " ";
       }
 
+      // for(auto [x,y] : mp){
+      //    cout << x << ":" << y<< " ";
+      // }cout << endl;
+      // for(auto [x,y] : mp2){
+      //    cout << x << ":" << y<< " ";
+      // }cout << endl;
       cout << ans << endl;
+      // cout << endl;
    }
-   return 0;
 }
