@@ -1,36 +1,32 @@
 #include <iostream>
 #include <math.h>
 using namespace std;
+
+void solve()
+{
+   int n;
+      cin >> n;
+      if(n%2==0){
+         cout << n/2 << " " << n/2 << "\n";
+      }else{
+         for(int i=2; i*i <= n; ++i){
+            if(n%i == 0){
+               cout << n/i << " " << n - n/i << endl;
+               return;
+            }
+         }
+
+         cout << 1 << " "<< n-1 << endl;
+      }
+}
+
 int main()
 {
    int test;
    cin >> test;
    while(test--)
    {
-      int n;
-      cin >> n;
-      if(n%2==0){
-         cout << n/2 << " " << n/2 << "\n";
-      }else{
-         // int a;
-         // if((n/3)%2==0){
-         //    if(((2*n)/3) + 1){
-         //       a= n / 3 + 1 ;
-         //    }else{
-         //       a = n/3 - 1;
-         //    }
-         // }else{
-         //    a = n/3;
-         // }
-         // for(a; a>=1; a-=2){
-         //    if((n-a)%a == 0){
-         //       cout << a << " "<<n-a << endl;
-         //       break;
-         //    }
-         // }
-         
-
-      }
+      solve();
    }
 }
 
@@ -39,3 +35,6 @@ int main()
    a  : 1-> underroot(n)
    opposing number
 */
+
+
+//GREATEST DOUBT OF THE CENTURY
