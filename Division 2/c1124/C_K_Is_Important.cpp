@@ -6,6 +6,7 @@ int main()
    cin >> test;
    while(test--)
    {
+      //input
       int n, k;
       cin >> n >> k;
       vector<int> v(n);
@@ -13,15 +14,17 @@ int main()
          cin >> v[i];
       }
 
+      //basic initialization
       k--;
       long long ans=0;
-
+      //edge case
       if (n == 1) {
          cout << v[0] << '\n';
          continue;
       }
 
-      if(n >= 2*k)
+      //case 1 : n is sufficiently large
+      if(n > 2*k)
       {
          for(int i=k; i<n-k; i++){
             ans += v[i];
@@ -30,10 +33,10 @@ int main()
          int m = 2*k;
          vector<int> ar(m);
          for(int i=0; i<m/2; i++){
-            ar[i+k] = v[i];
+            ar[i+k] = v[i];         //
          }
          for(int i=0; i<m/2; i++){
-            ar[m-i-1-k] = v[n-i-1];
+            ar[m-i-1-k] = v[n-i-1]; //
          }
 
          //solve
@@ -62,7 +65,7 @@ int main()
 
          cout << ans<< endl;;
       }
-      else
+      else //case 2 : n is short -> l and r OVERLAP
       {
          //use the same vector
          if(n%2==1) ans += v[n/2];
