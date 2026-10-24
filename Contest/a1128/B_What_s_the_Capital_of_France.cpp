@@ -42,33 +42,38 @@ void print (bool x) {
 
 /***wuwuwuwuwuwuwuw NOTE uwuwuwuwuwuwuwuwuwuwuwu
 
+h (i, 0, n-1) {
+   if (v[i] == v[i+1])
+      ans = (ans | v[i]);
+   else
+      ans = (ans | max(v[i], v[i+1]) | (max (v[i], v[i+1]) - 1));
+}
 
 
 mnmnmnmnmnmnmnmnm CODE HERE nmnmnmnmnmnmnmnmnmnmnm***/
 
-int adie () {
+ll adie () {
    int n;
    cin >> n;
-   string s;
-   cin >> s;
+   vll v(n);
+   scan(v);
 
-   int l=0, r=s.size()-1;
+   auto it = max_element (v.begin(), v.end());
+   ll e = * it;
 
-   while (l<n) {
-      if (s[l] == '1') {
-         break;
-      }
-      ++l;
+   auto before_begin = v.begin();
+   --before_begin ;
+   for (auto jt=it; jt != before_begin ; --jt) {
+      if (*jt < e)
+         return (e | (e-1));
    }
 
-   while (r>=0) {
-      if (s[r] == '1') {
-         break;
-      }
-      --r;
+   for (auto jt = it; jt != v.end() ; ++jt) {
+      if (*jt < e)
+         return (e | (e-1));
    }
 
-   return r - l;
+   return e;
 }
 
 

@@ -12,7 +12,8 @@ using mll = map <ll, ll>;
 #define all(x)       (x).begin(), (x).end()
 #define rall(x)      (x).rbegin(), (x).rend()
 #define h(i, a, b)   for(ll i=a; i<b; ++i)
-#define H(m)         for(auto it=m.begin(); it != m.end(); ++it)
+#define hr(i, a, b)  for(ll i=a; i>=b; --i)
+#define H(it, m)     for(auto it=m.begin(); it != m.end(); ++it)
 
 #define pb emplace_back
 #define ff first
@@ -40,14 +41,40 @@ void print (bool x) {
    cout << (x ? "YES\n" : "NO\n");
 }
 
-/*** ИѺͲЄЅ
+/***wuwuwuwuwuwuwuw NOTE uwuwuwuwuwuwuwuwuwuwuwu
 
 
 
-██████████████████████  𝚌𝚘𝚍𝚎 𝚑𝚎𝚛𝚎  ████████████████████████████***/
+mnmnmnmnmnmnmnmnm CODE HERE nmnmnmnmnmnmnmnmnmnmnm***/
 
- adie () {
+ll adie () {
+   int n, m;
+   cin >> n >> m;
+   vi v(n);
+   scan(v);
 
+   sort (all(v));
+
+   vi u(m, 0);
+   h(i, 0, n)    u[ v[i] - 1 ]++ ;
+
+   // print(u);
+
+   vll postcnt(m);
+   postcnt[m-1] = u[m-1];
+   hr(i, m-2, 0) postcnt[i] = postcnt[i+1] + u[i];
+
+   // print(postcnt);
+
+   ll ans = 0;
+   h(i, 0, m) {
+      if (2*i + 1 < m)
+         ans = max (ans, postcnt[i] + u[2*i + 1]);
+      else
+         ans = max (ans, postcnt[i]);
+   }
+
+   return ans;
 }
 
 
@@ -60,7 +87,7 @@ int main(){
    cin >> TC;
 
    while (TC--){
-      //IMMEDIATE CURSOR
+      cout << adie() << nl;
    }
 
    return 0;

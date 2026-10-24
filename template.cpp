@@ -12,6 +12,7 @@ using mll = map <ll, ll>;
 #define all(x)       (x).begin(), (x).end()
 #define rall(x)      (x).rbegin(), (x).rend()
 #define h(i, a, b)   for(ll i=a; i<b; ++i)
+#define hr(i, a, b)  for(ll i=a; i>=b; --i)
 #define H(it, m)     for(auto it=m.begin(); it != m.end(); ++it)
 
 #define pb emplace_back
@@ -46,29 +47,8 @@ void print (bool x) {
 
 mnmnmnmnmnmnmnmnm CODE HERE nmnmnmnmnmnmnmnmnmnmnm***/
 
-ll adie () {
-   int n;
-   cin >> n;
-   vll v(n);
-   scan(v);
-
-   ll ans = v[0];
-
-   h (i, 0, n-1) {
-      if (v[i] == v[i+1])
-      {
-         ans = max (ans, v[i]);
-      } 
-      else
-      {
-         ans = max (
-            ans,
-            max(v[i], v[i+1]) | (max (v[i], v[i+1]) - 1)
-         );
-      }
-   }
-
-   return ans;
+$1 adie () {
+   //$0
 }
 
 
@@ -81,7 +61,7 @@ int main(){
    cin >> TC;
 
    while (TC--){
-      cout << adie() << nl;
+      //$1
    }
 
    return 0;
