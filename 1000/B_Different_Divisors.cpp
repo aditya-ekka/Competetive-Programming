@@ -2,13 +2,15 @@
 
 using namespace std;
 
-void solve()
+int solve()
 {
    int d;
    cin >> d;
-   for(int i=2; ;++i){
-
-   }
+   
+   int a = 1 + d;
+   int b = a + d;
+   cout << 1 << ' '<< a << ' '<< b << ' ' ;+
+   return a * b;
 }
 
 
@@ -17,7 +19,7 @@ int main()
    int t;
    cin >> t;
    while(t--){
-      solve();
+      cout << solve() << endl;
    }
    return 0;
 

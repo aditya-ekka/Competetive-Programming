@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int solve(){
+long long solve(){
    int n, k;
    cin >> n >> k;
 
@@ -11,15 +11,15 @@ int solve(){
       cin >> a[i];
    }
 
+   long long ans = 0;
+   // k arrays of size n
 
-   int mid = (n+1)/2;
-   // if(n % 2 == 1) mid++;
+   int gap =  ;
+   int i = n*k - gap - 1;
 
-   mid-- ;
-
-   int ans = 0;
-   for (int i=0; i < k; ++i) {
-      ans += a[(i * n) + mid] ;
+   for (int j=0; j<k; ++j) {
+      ans += a[i];
+      i -= gap;
    }
 
    return ans;
@@ -32,3 +32,12 @@ int main(){
       cout << solve() << endl;
    }
 }
+
+/*
+
+2  => 1
+3  => 2     n + 1 / 2
+4  => 3
+
+
+*/
